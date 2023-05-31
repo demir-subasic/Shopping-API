@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import './mensClothing.css'
+import './home.css'
 import axios from 'axios'
 
-function MensClothing() {
-  const [data, setData] = useState([])
+function Home() {
+
+    const [data, setData] = useState([])
 
     const FetchData = async () => {
         try {
-            const response = await axios.get("https://fakestoreapi.com/products/category/men's%20clothing")
+            const response = await axios.get('https://fakestoreapi.com/products')
             setData(response.data)
         }
         catch(error){
@@ -37,4 +38,4 @@ function MensClothing() {
   )
 }
 
-export default MensClothing
+export default Home
