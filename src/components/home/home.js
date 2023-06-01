@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './home.css'
 import axios from 'axios'
+import SingleCard from '../singleCard/singleCard'
 
 function Home() {
 
@@ -23,16 +24,13 @@ function Home() {
   return (
     <div className='home'>
         {data.map((product) => (
-            <div className='single-item'>
-                <div key={product.id}>
-                    <img style={{width: '150px'}} src={product.image} alt="image" />
-                </div>
-                <div>
-                    <h1>{product.title}</h1>
-                    <p>{product.description}</p>
-                    <p>{product.price}</p>
-                </div>
-            </div>
+            <SingleCard 
+            key={product.id}
+            image={product.image}
+            title = {product.title}
+            description = {product.description}
+            price = {product.price}
+          />
         ))}
     </div>
   )

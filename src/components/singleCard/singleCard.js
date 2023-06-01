@@ -1,10 +1,19 @@
 import React from 'react'
-import './SingleCard.css'
+import './singleCard.css'
 
-function SingleCard() {
+function SingleCard({id, image, title, description, price}) {
+ 
   return (
-    <div>
-      
+    <div className='full-card'>
+    <div className='card-top' key={id}>
+      <img className='card-image' src={image} alt="image" />
+    </div>
+    <div className='card-bottom'>
+      <h1 className='card-title'>title={title}</h1>
+      <p className='card-description'>description={description}</p>
+      <p className='card-price'>price = {price}</p>
+
+    </div>
     </div>
   )
 }

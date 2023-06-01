@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import './womenClothes.css'
 import axios from 'axios'
+import SingleCard from '../singleCard/singleCard'
 
-function WomenClothes() {
+function WomenClothes(id, image, title, description, price) {
   const [data, setData] = useState([])
 
     const FetchData = async () => {
@@ -20,18 +21,15 @@ function WomenClothes() {
     }, [])
 
   return (
-    <div className='home'>
+    <div className='women-full-page'>
         {data.map((product) => (
-            <div className='single-item'>
-                <div key={product.id}>
-                    <img style={{width: '150px'}} src={product.image} alt="image" />
-                </div>
-                <div>
-                    <h1>{product.title}</h1>
-                    <p>{product.description}</p>
-                    <p>{product.price}</p>
-                </div>
-            </div>
+              <SingleCard 
+                key={product.id}
+                image={product.image}
+                title = {product.title}
+                description = {product.description}
+                price = {product.price}
+              />
         ))}
     </div>
   )
