@@ -22,7 +22,7 @@ function Jewelry() {
     }, [])
 
   return (
-    <div className='home'>
+    <div className='jewelry'>
         {data.map((product) => (
             <SingleCard 
             key={product.id}

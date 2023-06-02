@@ -21,7 +21,7 @@ function MensClothing() {
     }, [])
 
   return (
-    <div className='home'>
+    <div className='men'>
         {data.map((product) => (
            <SingleCard 
            key={product.id}

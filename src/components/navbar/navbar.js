@@ -11,11 +11,11 @@ function Navbar() {
       <nav>
         <a href=""><img style={{width: '150px', color: 'white'}} src={logo} alt="logo" /></a>
          <ul className='nav-ul'>
-           <li className='nav-li'><NavLink className='link-li' to="/">Home</NavLink></li>
-           <li className='nav-li'><NavLink className='link-li' to="/mensClothing">Men's Clothing</NavLink></li>
-           <li className='nav-li'><NavLink className='link-li' to="/womenClothes">Womens Clothes</NavLink></li>
-           <li className='nav-li'><NavLink className='link-li' to="/jewelry">Jewelry</NavLink></li>
-           <li className='nav-li'><NavLink className='link-li' to="/electronics">Electronics</NavLink></li>
+           <li className='nav-li'><NavLink className={({isActive}) => (isActive ? 'active' : '')} style={{fontSize: '20px', color: '#212247', textDecoration: 'none', fontWeight: '500'}}  to="/">Home</NavLink></li>
+           <li className='nav-li'><NavLink style={{fontSize: '20px', color: '#212247', textDecoration: 'none', fontWeight: '500'}} to="/mensClothing">Men's Clothing</NavLink></li>
+           <li className='nav-li'><NavLink style={{fontSize: '20px', color: '#212247', textDecoration: 'none', fontWeight: '500'}} to="/womenClothes">Womens Clothes</NavLink></li>
+           <li className='nav-li'><NavLink style={{fontSize: '20px', color: '#212247', textDecoration: 'none', fontWeight: '500'}} to="/jewelry">Jewelry</NavLink></li>
+           <li className='nav-li'><NavLink style={{fontSize: '20px', color: '#212247', textDecoration: 'none', fontWeight: '500'}} to="/electronics">Electronics</NavLink></li>
          </ul>
       </nav>
     </div>

@@ -21,7 +21,7 @@ function WomenClothes(id, image, title, description, price) {
     }, [])
 
   return (
-    <div className='women-full-page'>
+    <div className='women'>
         {data.map((product) => (
               <SingleCard 
                 key={product.id}

@@ -1,5 +1,10 @@
-.women-full-page{
+.women{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    place-items: center;
+    padding-top: 60px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    row-gap: 50px;
 }
