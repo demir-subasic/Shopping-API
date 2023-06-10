@@ -1,0 +1,12 @@
+.search {
+    padding-top: 30px;
+    text-align: center;
+}
+.search-input {
+    padding: 5px 10px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.search-input::placeholder {
+    font-size: 17px;
+}

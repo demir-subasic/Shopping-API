@@ -2,15 +2,21 @@ import React, {useState, useEffect} from 'react'
 import './home.css'
 import axios from 'axios'
 import SingleCard from '../singleCard/singleCard'
+import SearchBar from '../search-bar/search-bar'
 
 function Home() {
 
     const [data, setData] = useState([])
+    const [search, setSearch] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const FetchData = async () => {
         try {
+          setLoading(true)
             const response = await axios.get('https://fakestoreapi.com/products')
-            setData(response.data)
+            const data = response.data
+            setData(data)
+            setLoading(false)
         }
         catch(error){
             console.log(error)
@@ -21,9 +27,23 @@ function Home() {
         FetchData()
     }, [])
 
+    const updateData = (e) => {
+      setSearch(e)
+    }
+
+    const filterData = data.filter((item) => 
+      item.title.toLowerCase().includes(search.toLowerCase())
+    )
+        
+  
+
   return (
+    <>
+    <SearchBar  handleSearch={updateData}/>
     <div className='home'>
-        {data.map((product) => (
+        {loading ? <>Loading ....</> : 
+      <>
+      {filterData.map((product) => (
             <SingleCard 
             key={product.id}
             image={product.image}
@@ -31,8 +51,9 @@ function Home() {
             description = {product.description}
             price = {product.price}
           />
-        ))}
+        ))} </>}
     </div>
+    </>
   )
 }
 
