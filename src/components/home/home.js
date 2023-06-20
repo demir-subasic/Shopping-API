@@ -3,29 +3,29 @@ import './home.css'
 import axios from 'axios'
 import SingleCard from '../singleCard/singleCard'
 import SearchBar from '../search-bar/search-bar'
+import { useQuery } from 'react-query'
 
+const FetchData = async () => {
+        
+    const response = await axios.get('https://fakestoreapi.com/products')
+    const data = response.data
+    return data
+}
 function Home() {
 
-    const [data, setData] = useState([])
     const [search, setSearch] = useState('')
-    const [loading, setLoading] = useState(false)
+    const {data, isLoading, isError, error} = useQuery('products', FetchData)    
 
-    const FetchData = async () => {
-        try {
-          setLoading(true)
-            const response = await axios.get('https://fakestoreapi.com/products')
-            const data = response.data
-            setData(data)
-            setLoading(false)
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
+  
 
-    useEffect(() => {
-        FetchData()
-    }, [])
+      if(isLoading){
+        return <div>Loading ...</div>
+      }
+      if(isError) {
+        return <div>Error : {error.message}</div>
+      }
+
+
 
     const updateData = (e) => {
       setSearch(e)
@@ -41,8 +41,7 @@ function Home() {
     <>
     <SearchBar  handleSearch={updateData}/>
     <div className='home'>
-        {loading ? <>Loading ....</> : 
-      <>
+        
       {filterData.map((product) => (
             <SingleCard 
             key={product.id}
@@ -51,7 +50,7 @@ function Home() {
             description = {product.description}
             price = {product.price}
           />
-        ))} </>}
+        ))}
     </div>
     </>
   )
